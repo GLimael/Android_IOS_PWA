@@ -1,6 +1,7 @@
 import { View, StyleSheet, Button } from "react-native";
 import Header from "./Header";
 import Figura from "./Figura/Figura";
+import Dicas from './Dicas';
 
 export default function Jogo ({
     changeScreen
@@ -13,8 +14,11 @@ export default function Jogo ({
     return (
         <View style={styles.container}>
             <Header />
+            <View style={styles.row}>
+                <Figura />
+                <Dicas palavra={'Legal'}/>
+            </View>
             {/* <Button title={"Voltar"} onPress={voltar} /> */}
-            <Figura />
         </View>
     )
 }
@@ -22,5 +26,9 @@ export default function Jogo ({
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-    }
+    },
+    row: {
+        flexDirection: "row",
+        alignItems: "center"
+    },
 })
