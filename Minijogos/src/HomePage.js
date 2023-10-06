@@ -9,7 +9,7 @@ export default function HomePage({
     }
 
     const jogoForca = () => {
-        changeScreen("jogoforca")
+        changeScreen("palavraforca")
     }
 
     const jogoMemoria = () => {

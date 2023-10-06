@@ -1,7 +1,7 @@
 import { View } from 'react-native'
 import React from 'react'
 import Svg, { Ellipse, G, Line, Rect } from 'react-native-svg'
-import colors from './Cores/Cores'
+import colors from '../Cores/Cores'
 import { createAnimatableComponent } from 'react-native-animatable'
 
 const AnimatableLine = createAnimatableComponent(Line);
