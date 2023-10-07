@@ -6,13 +6,16 @@ import InputBox from './Palavra'
 import Keyboard from './Teclado'
 import StatusPopup from './StatusPopup'
 
-const index = () => {
+const index = ({
+  changeScreen,
+  setPalavra
+}) => {
   const [correctLetters, setCorrectLetters] = useState('');
   const [wrongLetters, setWrongLetters] = useState('');
   const [status, setStatus] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const correctWord = WordsArray[currentIndex].answer;
+  const correctWord = setPalavra;
 
   const storeCorrectLetters = (keyInput) => {
     const ans = correctWord.toUpperCase();

@@ -1,18 +1,19 @@
-import { View, TextInput, Button } from "react-native";
+import { useState } from "react";
+import { View, TextInput, Button, Text } from "react-native";
 
 export default function PalavraForca ({changeScreen, setPalavra}) {
-    const palavra = palavra;
+    const [texto, setTexto] = useState("")
 
-    const jogar = (palavra) => {
+    const jogar = () => {
         changeScreen('jogoforca')
-        setPalavra({palavra})
+        setPalavra(texto)
     }
 
     return (
         <View>
             <Text >Digite a palavra para o jogo: </Text>
-            <TextInput placeholder="Palavra" value={palavra}/>
-            <Button title="Jogar" onPress={jogar(palavra)}/>
+            <TextInput placeholder="Palavra" value={texto} onChangeText={setTexto}/>
+            <Button title="Jogar" onPress={jogar} />
         </View>
     )
 }

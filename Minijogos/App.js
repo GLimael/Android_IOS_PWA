@@ -46,6 +46,7 @@ export default function App() {
       {checkScreen('jogoforca') && (
         <JogoForca 
           changeScreen={changeScreen}
+          setPalavra={setPalavra}
         />
       )}
       {checkScreen('palavraforca') && (
