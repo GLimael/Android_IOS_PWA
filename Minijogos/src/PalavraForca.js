@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { View, TextInput, Button, Text } from "react-native";
 
-export default function PalavraForca ({changeScreen, setPalavra}) {
+export default function PalavraForca ({
+    changeScreen, setPalavra
+}) {
     const [texto, setTexto] = useState("")
 
     const jogar = () => {
-        changeScreen('jogoforca')
-        setPalavra(texto)
+        if (texto != null && texto.match("^[a-zA-Z]+$")) {
+            changeScreen('jogoforca')
+            setPalavra(texto)
+        }
     }
 
     return (

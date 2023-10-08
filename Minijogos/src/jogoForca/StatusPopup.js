@@ -7,11 +7,10 @@ import loseImg from '../../assets/lose.png'
 
 const StatusPopup = ({ status, onPress }) => {
 
-  const src = status === 'win' || status === 'completed' ? winImg : loseImg;
-  const message = status === 'win' ? 'Congrats you won' :
-    status === 'completed' ? 'Congratulations you completed the puzzle' : 'Oops you lost';
+  const src = status === 'completed' ? winImg : loseImg;
+  const message = status === 'completed' ? 'Parabéns, você acertou a palavra!!' : 'Oops não foi dessa vez!';
 
-  const buttonText = status === 'win' ? 'Next word' : status === 'completed' ? 'Replay' : 'Retry';
+  const buttonText = status === 'completed' ? 'Sair' : 'Tentar novamente';
   return (
     <Modal visible={status !== ''} animationType="fade" transparent={true}>
       <View style={styles.modalContainer}>

@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, Button } from 'react-native'
 import React, { useState } from 'react'
 import Header from './Header'
 import ManFigure from './Figura/Figura'
@@ -8,14 +8,13 @@ import StatusPopup from './StatusPopup'
 
 const index = ({
   changeScreen,
-  setPalavra
+  palavra
 }) => {
   const [correctLetters, setCorrectLetters] = useState('');
   const [wrongLetters, setWrongLetters] = useState('');
   const [status, setStatus] = useState('');
-  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const correctWord = setPalavra;
+  const correctWord = palavra;
 
   const storeCorrectLetters = (keyInput) => {
     const ans = correctWord.toUpperCase();
@@ -42,7 +41,7 @@ const index = ({
         status = '';
       }
     })
-    if (status === 'win' && currentIndex === WordsArray.length - 1) {
+    if (status === 'win') {
       setStatus('completed')
       return
     }
@@ -50,9 +49,8 @@ const index = ({
   }
 
   const handlePopupButton = () => {
-    if (status === 'win') {
-      // go to next word
-      setCurrentIndex(i => i + 1)
+    if (status === 'completed') {
+      changeScreen('homepage')
     }
     // clear all stored data
     setCorrectLetters('')
@@ -64,16 +62,18 @@ const index = ({
     }
   }
 
+  const voltar = () => {
+    changeScreen('palavraforca')
+  }
+
   return (
     <View style={styles.container}>
       <Header />
-      <View style={styles.row}>
-        <ManFigure wrongWord={wrongLetters.length} />
-        <WordBox wordData={WordsArray[currentIndex]} />
-      </View>
+      <ManFigure palavraErrada={wrongLetters.length} />
       <InputBox correctLetters={correctLetters} answer={correctWord} />
       <Keyboard correctLetters={correctLetters} wrongLetters={wrongLetters} onPress={(input) => storeCorrectLetters(input)} />
       <StatusPopup status={status} onPress={handlePopupButton} />
+      <Button title={"Voltar"} onPress={voltar} />
     </View>
   )
 }
