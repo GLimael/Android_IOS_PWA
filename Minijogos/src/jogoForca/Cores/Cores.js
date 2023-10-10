@@ -6,5 +6,5 @@ export default {
     light: '#EEEEEE',
     FrameColor: '#455',
     shapeColor: '#ff9945',
-    dicas: 'powderblue',
+    background: 'fafafa',
   }

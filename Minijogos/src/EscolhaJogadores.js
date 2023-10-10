@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button }
-  from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import colors from "./jogoForca/Cores/Cores"
+
 export default function Home({
   mudarNomeJogadores,
   changeScreen
@@ -21,14 +22,22 @@ export default function Home({
 
   return (
     <View style={styles.container}>
-      <Button title='Voltar' onPress={voltar} />
-      <TextInput placeholder='Jogador 1' value={jogador1} onChangeText={setJogador1} />
-      <Text>O nome do jogador 1 é: {jogador1}</Text>
-
-      <TextInput placeholder='Jogador 2' value={jogador2} onChangeText={setJogador2} />
-      <Text>O nome do jogador 2 é: {jogador2}</Text>
-
-      <Button title='Iniciar' onPress={handleClick} />
+      <TouchableOpacity onPress={voltar} style={styles.button}>
+        <Text style={styles.btnText}>Voltar</Text>
+      </TouchableOpacity>
+      <View style={styles.jogadores}>
+        <View style={styles.jogador}>
+          <TextInput placeholder='Jogador 1' value={jogador1} onChangeText={setJogador1} style={styles.input}/>
+          <Text style={styles.text}>O nome do jogador 1 é: {jogador1}</Text>
+        </View>
+        <View style={styles.jogador}>
+          <TextInput placeholder='Jogador 2' value={jogador2} onChangeText={setJogador2} style={styles.input}/>
+          <Text style={styles.text}>O nome do jogador 2 é: {jogador2}</Text>
+        </View>
+      </View>
+      <TouchableOpacity onPress={handleClick} style={styles.button}>
+        <Text style={styles.btnText}>Iniciar</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -36,8 +45,36 @@ export default function Home({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    gap: 80,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  jogadores: {
+    gap: 25,
+  },
+  jogador: {
+    gap: 10,
+  },
+  text: {
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  input: {
+    padding: 5,
+    backgroundColor: colors.inputBox,
+    borderRadius: 5,
+    fontSize: 14,
+    fontWeight: '500',
+  },
+  button: {
+    backgroundColor: colors.Modal,
+    padding: 8,
+    borderRadius: 4,
+  },
+  btnText: {
+    textAlign: 'center',
+    fontSize: 16,
+    fontWeight: '500',
+},
 });

@@ -1,9 +1,9 @@
 import { StyleSheet, View, Button } from 'react-native'
 import React, { useState } from 'react'
 import Header from './Header'
-import ManFigure from './Figura/Figura'
-import InputBox from './Palavra'
-import Keyboard from './Teclado'
+import Figura from './Figura/Figura'
+import Palavra from './Palavra'
+import Teclado from './Teclado'
 import StatusPopup from './StatusPopup'
 
 const index = ({
@@ -56,10 +56,6 @@ const index = ({
     setCorrectLetters('')
     setWrongLetters('')
     setStatus('')
-    // replay
-    if (status === 'completed') {
-      setCurrentIndex(0);
-    }
   }
 
   const voltar = () => {
@@ -69,9 +65,9 @@ const index = ({
   return (
     <View style={styles.container}>
       <Header />
-      <ManFigure palavraErrada={wrongLetters.length} />
-      <InputBox correctLetters={correctLetters} answer={correctWord} />
-      <Keyboard correctLetters={correctLetters} wrongLetters={wrongLetters} onPress={(input) => storeCorrectLetters(input)} />
+      <Figura palavraErrada={wrongLetters.length} />
+      <Palavra correctLetters={correctLetters} answer={correctWord} />
+      <Teclado correctLetters={correctLetters} wrongLetters={wrongLetters} onPress={(input) => storeCorrectLetters(input)} />
       <StatusPopup status={status} onPress={handlePopupButton} />
       <Button title={"Voltar"} onPress={voltar} />
     </View>

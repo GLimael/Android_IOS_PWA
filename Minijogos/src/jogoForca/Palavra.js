@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import colors from './Cores/Cores'
 
-const InputBox = ({ correctLetters, answer }) => {
+const Palavra = ({ correctLetters, answer }) => {
   return (
     <View style={styles.inputContainer}>
       {answer.split('').map((letter, index) => {
@@ -16,7 +16,7 @@ const InputBox = ({ correctLetters, answer }) => {
   )
 }
 
-export default InputBox
+export default Palavra
 
 const styles = StyleSheet.create({
   inputContainer: {

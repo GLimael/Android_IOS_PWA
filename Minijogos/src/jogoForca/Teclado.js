@@ -2,7 +2,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import colors from './Cores/Cores'
 
-const Key = ({ text, onPress, disabled }) => {
+const Tecla = ({ text, onPress, disabled }) => {
   return (
     <TouchableOpacity
       disabled={disabled}
@@ -12,20 +12,20 @@ const Key = ({ text, onPress, disabled }) => {
   )
 }
 
-const Keyboard = ({ onPress, correctLetters, wrongLetters }) => {
-  const keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+const Teclado = ({ onPress, correctLetters, wrongLetters }) => {
+  const teclas = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
   return (
     <View style={styles.container}>
-      {keys.split('').map((_, index) => {
-        const disable = correctLetters.includes(_) || wrongLetters.includes(_)
+      {teclas.split('').map((l, index) => {
+        const disable = correctLetters.includes(l) || wrongLetters.includes(l)
         return (
-          <Key key={index} text={_} onPress={onPress} disabled={disable} />)
+          <Tecla key={index} text={l} onPress={onPress} disabled={disable} />)
       })}
     </View>
   )
 }
 
-export default Keyboard
+export default Teclado
 
 const styles = StyleSheet.create({
   container: {
