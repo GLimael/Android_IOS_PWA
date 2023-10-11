@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import colors from "./jogoForca/Cores/Cores"
 
-export default function Home({
+export default function EscolhaJogadores({
   mudarNomeJogadores,
-  changeScreen
+  changeScreen,
+  pag
 }) {
   const [jogador1, setJogador1] = useState("");
   const [jogador2, setJogador2] = useState("");
@@ -12,7 +13,8 @@ export default function Home({
   const handleClick = () => {
     if (mudarNomeJogadores) {
       mudarNomeJogadores(jogador1, jogador2)
-      changeScreen("jogovelha")
+      console.log(pag)
+      changeScreen(pag)
     }
   }
 

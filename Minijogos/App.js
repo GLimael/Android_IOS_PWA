@@ -6,12 +6,14 @@ import HomePage from './src/HomePage';
 import JogoVelha from './src/jogoVelha/JogoVelha';
 import JogoForca from './src/jogoForca/JogoForca';
 import PalavraForca from './src/PalavraForca';
+import JogoMemoria from './src/jogoMemoria/JogoMemoria'
 
 export default function App() {
   const [screen, setScreen] = useState("homepage");
   const [jogador1, setJogador1] = useState("");
   const [jogador2, setJogador2] = useState("");
   const [palavra, setPalavra] = useState("");
+  const [pagina, setPagina] = useState('');
 
   const checkScreen = (screenName) => screenName === screen;
 
@@ -28,12 +30,14 @@ export default function App() {
       {checkScreen('homepage') && (
         <HomePage 
           changeScreen={changeScreen}
+          pag={setPagina}
         />
       )}
       {checkScreen("escolhajogadores") && (
         <EscolhaJogadores
           mudarNomeJogadores={setJogadores}
           changeScreen={changeScreen}
+          pag={pagina}
         />
       )}
       {checkScreen("jogovelha") && (
@@ -53,6 +57,11 @@ export default function App() {
         <PalavraForca 
           changeScreen={changeScreen}
           setPalavra={setPalavra}
+        />
+      )}
+      {checkScreen('jogomemoria') && (
+        <JogoMemoria 
+          changeScreen={changeScreen}
         />
       )}
     </View>

@@ -1,21 +1,32 @@
+import { useEffect, useState } from "react";
 import { TouchableOpacity, View, Text, StyleSheet } from "react-native";
 import colors from "./jogoForca/Cores/Cores";
 
 export default function HomePage({
-    changeScreen
+    changeScreen,
+    pag
 }) {
-
-    const jogoVelha = () => {
-        changeScreen("escolhajogadores")
-    }
 
     const jogoForca = () => {
         changeScreen("palavraforca")
     }
 
-    const jogoMemoria = () => {
+    const paginaRetorno = (page) =>{
+        const pagina = (page === 'velha' ? 'jogovelha' : 'jogomemoria')
+        pag(pagina);    
+    }
+
+    const jogoVelha = () => {
+        paginaRetorno('velha')
         changeScreen("escolhajogadores")
     }
+
+    const jogoMemoria = () => {
+        paginaRetorno('memoria')
+        changeScreen("escolhajogadores")
+    }
+
+   
 
     return (
         <View style={styles.container}>
@@ -23,7 +34,7 @@ export default function HomePage({
                 Lima Minijogos
             </Text>
             <View style={styles.botoes}>
-                <TouchableOpacity onPress={jogoVelha} style={styles.button}>
+                <TouchableOpacity onPress={jogoVelha} style={styles.button} >
                     <Text style={styles.btnText}>Jogo da Velha</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={jogoForca} style={styles.button}>
