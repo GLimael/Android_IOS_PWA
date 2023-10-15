@@ -8,7 +8,11 @@ export default function PalavraForca ({
     const [texto, setTexto] = useState("")
 
     const jogar = () => {
-        if (texto != null && texto.match("^[a-zA-Z]+$")) {
+        if (texto === "") {
+            alert("Insira uma palavra!")
+        }else if (!texto.match("^[a-zA-Z]+$")) {
+            alert("Insira uma palavra sem acento, sem espaço e sem carácteres especiais!")
+        }else {
             changeScreen('jogoforca')
             setPalavra(texto)
         }

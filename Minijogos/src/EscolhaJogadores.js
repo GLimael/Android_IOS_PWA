@@ -11,9 +11,14 @@ export default function EscolhaJogadores({
   const [jogador2, setJogador2] = useState("");
 
   const handleClick = () => {
-    if (mudarNomeJogadores) {
+    if (jogador1 === "") {
+      alert ('Insira um nome para o jogador 1!')
+    }else if (jogador2 === "") {
+      alert ('Insira um nome para o jogador 2!')
+    }else if (jogador1 === jogador2) {
+      alert ('O nome dos jogadores não podem ser os mesmos!')
+    }else {
       mudarNomeJogadores(jogador1, jogador2)
-      console.log(pag)
       changeScreen(pag)
     }
   }
