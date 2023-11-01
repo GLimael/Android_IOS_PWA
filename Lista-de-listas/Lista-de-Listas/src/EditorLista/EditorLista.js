@@ -15,7 +15,7 @@ export default function HomeScreen() {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text>Adicionar Lista</Text>
-            <TextInput placeholder='Nome da lista' value={nomeLista} onChangeText={salvarNomeLista()} />
+            <TextInput placeholder='Nome da lista' value={nomeLista} onChangeText={setNomeLista} />
         </View>
     );
 }
