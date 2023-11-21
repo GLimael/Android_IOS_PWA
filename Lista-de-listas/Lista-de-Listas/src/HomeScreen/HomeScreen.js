@@ -14,6 +14,11 @@ export default function HomeScreen({ navigation }) {
         setLista(JSON.parse(itens));
     }
 
+    const removeLista = (item) => {
+        console.log("RemoveLista: ", item);
+
+    }
+
     
     console.log("Home: ", lista, typeof lista)
 
@@ -26,8 +31,18 @@ export default function HomeScreen({ navigation }) {
             {lista && 
                 lista.map((nome, index) => {
                     return (
-                        <View key={index}>
-                            <Text>{nome}</Text>
+                        <View key={index} style={{width: "80%", backgroundColor: '#dcdcdc', flexDirection: 'row', marginBottom: 4, alignItems: 'center'}}>
+                            <TouchableOpacity onPress={() => {navigation.navigate('ConteudoLista', {list: nome})}} style={{width: '85%', paddingHorizontal: 16, paddingVertical: 8}} >
+                                <Text>{nome}</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{marginRight: 8}}>
+                                <Text>🖊</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => {
+                                removeLista(nome)
+                            }}>
+                                <Text>🗑</Text>
+                            </TouchableOpacity>
                         </View>
                     )
                 })
